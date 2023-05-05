@@ -7,13 +7,13 @@ dstpath="$HOME/.steam/root/compatibilitytools.d"
   latestversion="$(curl -s $latesturi | grep -E -m1 "tag_name" | cut -d \" -f4)"
   if [[ -d $dstpath/$latestversion ]]
   then
-    echo "Proton $latestversion is the latest version and is already installed."
+    echo "Version $latestversion is the latest version and is already installed."
     sleep 1
     echo "Exiting..."
     sleep 1
     exit 0
   else
-    echo "Proton $latestversion is the latest version and is not installed yet."
+    echo "Version $latestversion is the latest version and is not installed yet."
     sleep 3
     echo "Installing the latest version of Proton now!"
     sleep 2
