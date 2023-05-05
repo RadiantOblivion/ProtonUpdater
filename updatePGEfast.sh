@@ -4,7 +4,7 @@ latesturi="https://api.github.com/repos/GloriousEggroll/proton-ge-custom/release
 dstpath="$HOME/.steam/root/compatibilitytools.d"
 
 
-  latestversion="$(curl -s $latesturi | egrep -m1 "tag_name" | cut -d \" -f4)"
+  latestversion="$(curl -s $latesturi | grep -E -m1 "tag_name" | cut -d \" -f4)"
   if [[ -d $dstpath/Proton-$latestversion ]]
   then
     echo "Proton $latestversion is the latest version and is already installed."
@@ -17,7 +17,7 @@ dstpath="$HOME/.steam/root/compatibilitytools.d"
     sleep 3
     echo "Installing the latest version of Proton now!"
     sleep 2
-    url=$(curl -s $latesturi | egrep -m1 "browser_download_url.*.tar.gz" | cut -d \" -f4)
+    url=$(curl -s $latesturi | grep -E -m1 "browser_download_url.*.tar.gz" | cut -d \" -f4)
   fi
 
 rsp="$(curl -sI "$url" | head -1)"
