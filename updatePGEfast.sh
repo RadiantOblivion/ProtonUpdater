@@ -28,3 +28,12 @@ echo "$rsp" | grep -q 302 || {
 }
 
 curl -sL "$url" | tar xfzv - -C "$dstpath"
+
+RestartSteam() {
+  if [ "$( pgrep steam )" != "" ]; then
+    echo "Restarting Steam"
+    pkill -TERM steam #restarting Steam
+    sleep 5s
+    nohup steam </dev/null &>/dev/null &
+  fi
+}
