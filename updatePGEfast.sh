@@ -33,6 +33,8 @@ echo "$rsp" | grep -q 302 || {
 
 curl -sL "$url" | tar xfzv - -C "$dstpath"
 
+RestartSteam
+
 RestartSteam() {
   if [ "$( pgrep steam )" != "" ]; then
     echo "Restarting Steam"
